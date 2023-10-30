@@ -2,20 +2,22 @@ import React from "react";
 import { StyleSheet, View, Text, FlatList } from "react-native";
 import Card from "./Card";
 
+
 const renderCard = ({item}) => {
     return (
         <Card item={item} />
     );
 }
 
-const ArticleList = ({articles}) => {
+
+const ArticleList = ({data}) => {
     
-    if (articles != null)
-    {
+    if (data != null)
+    {                  
         return (
             <FlatList
                 style={StyleSheet.container}
-                data={articles}
+                data={data}
                 renderItem={renderCard}
                 keyExtractor={item => item.id}
                 ItemSeparatorComponent={ () => {
@@ -26,10 +28,11 @@ const ArticleList = ({articles}) => {
             />
         )
 
+    
     } else {
         return (
             <View>
-                <Text>Loading Articles...</Text>
+                <Text>Loading Posts...</Text>
             </View>
         )
     }

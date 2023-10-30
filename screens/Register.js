@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { auth } from '../lib/firebase';
-import { onAuthStateChanged } from '../lib/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 import LoginScreen from "./Login";
 
 const RegisterScreen = ({navigation}) => {

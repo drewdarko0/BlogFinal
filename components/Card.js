@@ -7,22 +7,22 @@ const Card = ({item}) => {
     const navigation = useNavigation();
 
     return (       
-        <TouchableOpacity
-            style={styles.button}
-            onPress={ () => { navigation.navigate('Article', { article: item }) }}
-        >
+        
             <View style={[styles.card]}>
+                
                 <Image 
                     style={styles.cardImage} 
-                    source={{ uri: item.image }}
+                    source={{uri: item.image }}
                 />
                 <View style={styles.cardContent}>
                     <View style={styles.cardHeader}>
                         <Text style={styles.title}>{item.title}</Text>
                     </View>
+                    <View style={styles.description}>
+                        <Text>{item.text}</Text>
+                    </View>
                 </View>
             </View>
-        </TouchableOpacity>
 
     )
 }
@@ -56,8 +56,9 @@ const styles = StyleSheet.create({
         minWidth: 300
     },
     cardImage: {
-        flex: 1,
-        borderRadius: 3
+        
+        height: 720,
+        width: 720,
     },
     cardContent: {
         paddingVertical: 15,
@@ -67,9 +68,9 @@ const styles = StyleSheet.create({
         paddingBottom: 5
     },
     title: {
-        fontSize: 28
+        fontSize: 35
     },
     description: {
-        fontSize: 15
+        fontSize: 20
     },
 });
