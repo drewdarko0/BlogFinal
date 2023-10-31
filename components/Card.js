@@ -1,21 +1,25 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 const Card = ({item}) => {
 
     const navigation = useNavigation();
+    const timestamp = item.timestamp;
+    const blogTimestamp = new Date(timestamp.seconds*1000);
+    const formatedTime=blogTimestamp.toString();
 
     return (       
         
-            <View style={[styles.card]}>
-                
+            <View style={styles.card}>
+                <Text style={styles.timeStamp}>{formatedTime}</Text>
                 <Image 
                     style={styles.cardImage} 
-                    source={{uri: item.image }}
+                    source={item.image}
                 />
                 <View style={styles.cardContent}>
                     <View style={styles.cardHeader}>
+                        
                         <Text style={styles.title}>{item.title}</Text>
                     </View>
                     <View style={styles.description}>
@@ -56,9 +60,9 @@ const styles = StyleSheet.create({
         minWidth: 300
     },
     cardImage: {
-        
-        height: 720,
-        width: 720,
+        flex: 1,
+        borderRadius: 3,
+        height: 600
     },
     cardContent: {
         paddingVertical: 15,
@@ -67,8 +71,12 @@ const styles = StyleSheet.create({
     cardHeader: {
         paddingBottom: 5
     },
+    timeStamp: {
+        textAlign: 'center',
+    },
     title: {
-        fontSize: 35
+        fontSize: 35,
+        textAlign: 'center',
     },
     description: {
         fontSize: 20
