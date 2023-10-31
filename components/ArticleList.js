@@ -14,7 +14,7 @@ const ArticleList = ({data}) => {
     
     if (data != null)
     {                  
-        return (
+        return (            
             <FlatList
                 style={StyleSheet.container}
                 data={data}
@@ -26,17 +26,15 @@ const ArticleList = ({data}) => {
                     )
                 }}
             />
-        )
-
-    
-    } else {
-        return (
-            <View>
-                <Text>Loading Posts...</Text>
-            </View>
-        )
+        )    
+        } else {
+            return (
+                <View>
+                    <Text>Loading Posts...</Text>
+                </View>
+            )
+        }
     }
-}
 
 export default ArticleList;
 

@@ -3,15 +3,14 @@ import {Image, StyleSheet, View} from 'react-native';
 
 
 const Header = () => {
-    console.log('header success!');
     return (
-        <View style={styles.container}>
+        <View>
             <Image
-                source={require('../assets/image1.jpg')}
-                style={styles.image}
+                style={styles.container}
+                source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}                
             />
         </View>
-    );
+    )
 }
 
 export default Header;
@@ -19,9 +18,10 @@ export default Header;
 const styles = StyleSheet.create({
     container: {
       flex: 1,
+      minHeight: 100,
+      minWidth: 300
     },image: {
         flex: 1,
         justifyContent: 'center',
       },
-    });
-    
+});    

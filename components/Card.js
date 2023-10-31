@@ -1,16 +1,18 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const Card = ({item}) => {
 
     const navigation = useNavigation();
-    const timestamp = item.timestamp;
-    const blogTimestamp = new Date(timestamp.seconds*1000);
+    const blogTimestamp = new Date(item.timestamp.seconds*1000);
     const formatedTime=blogTimestamp.toString();
 
     return (       
-        
+        <TouchableOpacity
+        style={styles.button}
+        onPress={ () => { navigation.navigate('Article', { article: item }) }}
+        >
             <View style={styles.card}>
                 <Text style={styles.timeStamp}>{formatedTime}</Text>
                 <Image 
@@ -27,42 +29,33 @@ const Card = ({item}) => {
                     </View>
                 </View>
             </View>
-
+        </TouchableOpacity>
     )
 }
 
 export default Card;
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 15
-    },
+const styles = StyleSheet.create({    
     card: {
         borderWidth: 0,
-        minHeight: 300,
+        minHeight: 500,
         shadowColor: '#000000',
         shadowOffset: {
-            width: 2,
-            height: 2
+            width: 0,
+            height: 0
         },
         shadowOpacity: 0.5,
         shadowRadius: 4,
-        marginVertical: 12,
-        marginTop: 0,
+        margin: 12,
         backgroundColor: '#FFFFFF',
-        marginRight: 0,
         alignSelf: "stretch",
-        elevation: 4,
+        elevation: 7,
         minWidth: 300
     },
     cardImage: {
-        flex: 1,
+        flex: '1',
         borderRadius: 3,
-        height: 600
+        marginHorizontal: 15
     },
     cardContent: {
         paddingVertical: 15,
@@ -75,10 +68,10 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     title: {
-        fontSize: 35,
+        fontSize: 30,
         textAlign: 'center',
     },
     description: {
-        fontSize: 20
+        fontSize: 25
     },
 });
