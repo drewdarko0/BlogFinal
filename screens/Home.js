@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 
 
 const blogRef = collection(db, 'blog');
-const q = query(blogRef, orderBy('timestamp'));
+const q = query(blogRef, orderBy('timestamp', 'desc'));
 const querySnapshot = await getDocs(q);
 const blogData = []; 
 

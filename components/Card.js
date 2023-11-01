@@ -6,7 +6,7 @@ const Card = ({item}) => {
 
     const navigation = useNavigation();
     const blogTimestamp = new Date(item.timestamp.seconds*1000);
-    const formatedTime=blogTimestamp.toString();
+    const formatedTime=blogTimestamp.toUTCString();
 
     return (       
         <TouchableOpacity

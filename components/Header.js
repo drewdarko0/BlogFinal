@@ -7,7 +7,7 @@ const Header = () => {
         <View>
             <Image
                 style={styles.container}
-                source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}                
+                source={require('../assets/BlogHeader.png')}                
             />
         </View>
     )
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       minHeight: 100,
-      minWidth: 300
+      minWidth: 400
     },image: {
         flex: 1,
         justifyContent: 'center',
