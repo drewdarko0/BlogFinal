@@ -33,6 +33,10 @@ const RegisterScreen = ({navigation}) => {
                 // Signed up 
                 const user = userCredential.user;
                 // ...
+                setEmail('');
+                setPassword1('');
+                setPassword2('');
+                alert('Registration Successful!');
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -40,90 +44,91 @@ const RegisterScreen = ({navigation}) => {
                 // ..
                 console.log(errorCode);
                 alert(errorMessage);
-            });
+            });            
         }else{
-            
+            alert('Both password fields must match to verify password')
         }
+        
     }
+
     
     return (
         <SafeAreaView>
-        <View style={styles.container}>
-            <Text style={styles.heading}>Please enter your email and password below.</Text>
-            <Input
-                placeholder='Enter your email'
-                label='Email'
-                leftIcon={
-                    <Ionicons 
-                        style={styles.mail}
-                        name="mail" 
-                        size={24} 
-                        color="#075133" 
-                    />
-                }
-                autoCapitalize = 'none'
-                value={email}
-                onChangeText={text => setEmail(text)}
-            />
-            <Input
-                placeholder='Enter your password'
-                label='Password'
-                leftIcon={
-                    <Ionicons 
-                        style={styles.mail}
-                        name="lock-closed" 
-                        size={24} 
-                        color="#075133" 
-                    />
-                }
-                autoCapitalize = 'none'
-                value={password1}
-                onChangeText={text => setPassword1(text)}
-                secureTextEntry
-            />
-            <Input
-                placeholder='Verify your password'
-                label='Verify Password'
-                leftIcon={
-                    <Ionicons 
-                        style={styles.mail}
-                        name="lock-closed" 
-                        size={24} 
-                        color="#075133" 
-                    />
-                }
-                autoCapitalize = 'none'
-                value={password2}
-                onChangeText={text => setPassword2(text)}
-                secureTextEntry
-            />
-            <Button 
-                title="Register" 
-                style={styles.button} 
-                onPress={() => registration(email, password1, password2, navigation)}
-                color='#075133' 
-            />
-
-<Pressable
-                onPress={event => navigation.navigate('Admin')}
-                style={({pressed}) => [
-                    {
-                        backgroundColor: pressed ? 'rgb(210, 230, 255)' : 'white',
-                    },
-                    styles.pressableadmin,
-            ]}>
-            {({pressed}) => (
-                <Ionicons 
-                    style={styles.admin}
-                    name="shield" 
-                    size={64} 
-                    color="#075133" 
+            <View style={styles.container}>
+                <Text style={styles.heading}>Please enter your email and password below.</Text>
+                <Input
+                    placeholder='Enter your email'
+                    label='Email'
+                    leftIcon={
+                        <Ionicons 
+                            style={styles.mail}
+                            name="mail" 
+                            size={24} 
+                            color="#075133" 
+                        />
+                    }
+                    autoCapitalize = 'none'
+                    value={email}
+                    onChangeText={text => setEmail(text)}
                 />
-            )}
-            </Pressable>
-                 
-        </View>
-    </SafeAreaView>
+                <Input
+                    placeholder='Enter your password'
+                    label='Password'
+                    leftIcon={
+                        <Ionicons 
+                            style={styles.mail}
+                            name="lock-closed" 
+                            size={24} 
+                            color="#075133" 
+                        />
+                    }
+                    autoCapitalize = 'none'
+                    value={password1}
+                    onChangeText={text => setPassword1(text)}
+                    secureTextEntry
+                />
+                <Input
+                    placeholder='Verify your password'
+                    label='Verify Password'
+                    leftIcon={
+                        <Ionicons 
+                            style={styles.mail}
+                            name="lock-closed" 
+                            size={24} 
+                            color="#075133" 
+                        />
+                    }
+                    autoCapitalize = 'none'
+                    value={password2}
+                    onChangeText={text => setPassword2(text)}
+                    secureTextEntry
+                />
+                <Button 
+                    title="Register" 
+                    style={styles.button} 
+                    onPress={() => registration(email, password1, password2, navigation)}
+                    color='#075133' 
+                />
+
+                <Pressable
+                    onPress={event => navigation.navigate('Admin')}
+                    style={({pressed}) => [
+                        {
+                            backgroundColor: pressed ? 'rgb(210, 230, 255)' : 'white',
+                        },
+                        styles.pressableadmin,
+                ]}>
+                    {({pressed}) => (
+                        <Ionicons 
+                            style={styles.admin}
+                            name="shield" 
+                            size={64} 
+                            color="#075133" 
+                        />
+                    )}
+                </Pressable>                    
+            </View>
+        </SafeAreaView>
     )
 }
 

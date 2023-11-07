@@ -1,14 +1,26 @@
 import React, { useState } from "react";
-import { Button, StyleSheet, View, Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { auth } from '../lib/firebase';
+import { Input, Button } from '@rneui/themed';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
-import LoginScreen from "./Login";
+import { collection, addDoc } from 'firebase/firestore';
 import { SafeAreaView } from "react-native-safe-area-context";
 
-
+const docRef = await addDoc(collection(db, "blog"), {
+    timestamp: {timestamp},
+    image: {image},
+    title: {title},
+    text: {text}
+  });
+  
 const AdminScreen = ({navigation}) => {
+    
+    const [ timestamp, setTimestamp ] = useState('');
+    const [ image, setImage ] = useState('');
+    const [ title, setTitle ] = useState('');
+    const [ text, setText ] = useState('');
 
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    
 
     const user = auth.currentUser;
 
@@ -29,14 +41,11 @@ const AdminScreen = ({navigation}) => {
         }
       })
 
-    const register = () => {
-        console.log('registering');
-        navigation.navigate('Register');
-        setEmail('');
-        setPassword('');
+    createNewPost = (timestamp, image, title, text) => {
+        
     }
 
-    
+        
     return (
         <SafeAreaView>
             <View style={styles.container}>
@@ -61,6 +70,47 @@ const AdminScreen = ({navigation}) => {
                         color='#075133'
                     />
                 </View>
+                
+                    <Input
+                        placeholder={new Date().toLocaleDateString()}
+                        label='Blog Timestamp'
+                        
+                        autoCapitalize = 'none'
+                        value={timestamp}
+                        onChangeText={text => {
+                            if(text){
+                                setTimestamp(text)
+                            }else{
+                                setTimestamp(new Date())
+                            }
+                        }
+                        }
+                    />
+                    <Input
+                        placeholder='Enter an image URL'
+                        label='Image URL'
+                        
+                        autoCapitalize = 'none'
+                        value={image}
+                        onChangeText={text => setImage(text)}
+                    />
+                    <Input
+                        placeholder='Enter title for post'
+                        label='Blog Title'                        
+                        autoCapitalize = 'none'
+                        value={title}
+                        onChangeText={text => setTitle(text)}
+                    />
+                    <Input
+                        placeholder='Enter text content for post'
+                        label='Blog Text'
+                        multiline='true'
+                        numberOfLines='4'
+                        autoCapitalize = 'none'
+                        value={text}
+                        onChangeText={text => setText(text)}
+                    />
+                
             </View>
         </SafeAreaView>    
     )
@@ -75,7 +125,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: "50%"
     },
     button: {
         marginTop: 15,
@@ -86,5 +135,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         display: 'flex',
         
+    },
+    form: {
+        margin: 0,
+        padding: 0
     }
   });

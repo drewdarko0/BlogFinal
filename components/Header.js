@@ -18,12 +18,12 @@ export default Header;
 const styles = StyleSheet.create({
     container: {
       
-      minHeight: 90,
-      minWidth: 390,
+        minHeight: 90,
+        minWidth: 390,
     },
     image: {
         flex: 1,
         justifyContent: 'center',
-        minWidth: 390,
-      },
+        marginHorizontal: 15
+    },
 });    

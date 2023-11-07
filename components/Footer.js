@@ -8,6 +8,7 @@ const Footer = () => {
     const navigation = useNavigation();
 
     return (
+        
         <View style={styles.container}>
             <Pressable
                 onPress={event => window.location.href='https://github.com/drewdarko0'}
