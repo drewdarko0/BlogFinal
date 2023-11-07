@@ -5,6 +5,7 @@ import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import Header from '../components/Header';
 import Footer from "../components/Footer";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 
 const blogRef = collection(db, 'blog');
@@ -22,13 +23,13 @@ querySnapshot.forEach((doc) => {
 const HomeScreen = ({navigation}) => {
     
     return (
-        
-        <View style={styles.container}>
-            <Header />
-            <ArticleList data={blogData} />
-            <Footer />
-        </View>
-        
+        <SafeAreaView>
+            <View style={styles.container}>
+                <Header />
+                <ArticleList data={blogData} />
+                <Footer />
+            </View>
+        </SafeAreaView>
     )
 }
 

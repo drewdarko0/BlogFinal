@@ -24,6 +24,7 @@ const ArticleScreen = ({route}) => {
                 onPress={() => navigation.navigate('Home')}
                 style={styles.button}
                 title='Back'
+                color='#075133'
             />
         </View>
     );
