@@ -1,26 +1,28 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { auth } from '../lib/firebase';
+import { auth, db } from '../lib/firebase';
 import { Input, Button } from '@rneui/themed';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
 import { collection, addDoc } from 'firebase/firestore';
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const docRef = await addDoc(collection(db, "blog"), {
+
+const dbRef = await addDoc(collection(db, "blog"));
+
+const data = {
     timestamp: {timestamp},
     image: {image},
     title: {title},
     text: {text}
-  });
-  
-const AdminScreen = ({navigation}) => {
-    
-    const [ timestamp, setTimestamp ] = useState('');
-    const [ image, setImage ] = useState('');
-    const [ title, setTitle ] = useState('');
-    const [ text, setText ] = useState('');
+};
 
+const [ timestamp, setTimestamp ] = useState('');
+const [ image, setImage ] = useState('');
+const [ title, setTitle ] = useState('');
+const [ text, setText ] = useState('');
     
+    
+const AdminScreen = ({navigation}) => {  
 
     const user = auth.currentUser;
 
@@ -41,8 +43,16 @@ const AdminScreen = ({navigation}) => {
         }
       })
 
-    createNewPost = (timestamp, image, title, text) => {
-        
+    createNewPost = () => {
+        addDoc(dbRef, data)
+        console.log(dbRef)
+        console.log(data)
+        .then(docRef => {
+            console.log('Document added')
+        })
+        .catch(error => {
+            console.log(error);
+        })
     }
 
         
@@ -110,7 +120,12 @@ const AdminScreen = ({navigation}) => {
                         value={text}
                         onChangeText={text => setText(text)}
                     />
-                
+                    <Button 
+                        title="Sign In" 
+                        style={styles.button} 
+                        onPress={() => createNewPost()} 
+                        color='#075133'
+                    />
             </View>
         </SafeAreaView>    
     )
