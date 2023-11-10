@@ -3,26 +3,16 @@ import { StyleSheet, Text, View } from "react-native";
 import { auth, db } from '../lib/firebase';
 import { Input, Button } from '@rneui/themed';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { SafeAreaView } from "react-native-safe-area-context";
 
-
-const dbRef = await addDoc(collection(db, "blog"));
-
-const data = {
-    timestamp: {timestamp},
-    image: {image},
-    title: {title},
-    text: {text}
-};
-
-const [ timestamp, setTimestamp ] = useState('');
-const [ image, setImage ] = useState('');
-const [ title, setTitle ] = useState('');
-const [ text, setText ] = useState('');
     
-    
-const AdminScreen = ({navigation}) => {  
+const AdminScreen = ({navigation}) => {
+
+    const [ timestamp, setTimestamp ] = useState('');
+    const [ img, setImage ] = useState('');
+    const [ title, setTitle ] = useState('');
+    const [ text, setText ] = useState('');
 
     const user = auth.currentUser;
 
@@ -43,15 +33,18 @@ const AdminScreen = ({navigation}) => {
         }
       })
 
-    createNewPost = () => {
-        addDoc(dbRef, data)
-        console.log(dbRef)
-        console.log(data)
-        .then(docRef => {
-            console.log('Document added')
-        })
-        .catch(error => {
-            console.log(error);
+    const createNewPost = async (img, title, text) => {
+        await addDoc(collection(db, "blog"), {
+            timestamp: Timestamp.now(),
+            image: img,
+            title: title,
+            text: text
+        }).then( (docRef) => {
+            console.log('Adding doc' + JSON.stringify(docRef))
+        }).catch ( (err) => {
+            console.log('Error adding doc');
+        }).finally( () => {
+            console.log('Finally sent...');
         })
     }
 
@@ -88,12 +81,12 @@ const AdminScreen = ({navigation}) => {
                         autoCapitalize = 'none'
                         value={timestamp}
                         onChangeText={text => {
-                            if(text){
-                                setTimestamp(text)
-                            }else{
-                                setTimestamp(new Date())
-                            }
-                        }
+                                        if(text){
+                                            setTimestamp(text)
+                                        }else{
+                                            setTimestamp(new Date())
+                                        }
+                                    }
                         }
                     />
                     <Input
@@ -101,7 +94,7 @@ const AdminScreen = ({navigation}) => {
                         label='Image URL'
                         
                         autoCapitalize = 'none'
-                        value={image}
+                        value={img}
                         onChangeText={text => setImage(text)}
                     />
                     <Input
@@ -121,9 +114,9 @@ const AdminScreen = ({navigation}) => {
                         onChangeText={text => setText(text)}
                     />
                     <Button 
-                        title="Sign In" 
+                        title="Submit"
                         style={styles.button} 
-                        onPress={() => createNewPost()} 
+                        onPress={() => createNewPost(img, title, text)} 
                         color='#075133'
                     />
             </View>
@@ -146,10 +139,21 @@ const styles = StyleSheet.create({
         marginLeft: 8, 
         marginRight: 8, 
     },
+    homeButton: {
+        marginLeft: 8, 
+        marginRight: 8, 
+    },
+    logoutButton: {
+        marginLeft: 8, 
+        marginRight: 8, 
+    },
+    registerButton: {
+        marginLeft: 8, 
+        marginRight: 8, 
+    },
     buttonGroup: {
         flexDirection: 'row',
-        display: 'flex',
-        
+        display: 'flex',        
     },
     form: {
         margin: 0,

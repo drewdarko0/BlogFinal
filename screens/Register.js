@@ -4,14 +4,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Button } from '@rneui/themed';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { auth } from '../lib/firebase';
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { signOut, getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
 const RegisterScreen = ({navigation}) => {
 
     const [email, setEmail] = useState('');
     const [password1, setPassword1] = useState('');
     const [password2, setPassword2] = useState('');
-
 
     const auth = getAuth();
 
@@ -37,6 +36,8 @@ const RegisterScreen = ({navigation}) => {
                 setPassword1('');
                 setPassword2('');
                 alert('Registration Successful!');
+                signOut(auth);
+                navigation.navigate('Login');
             })
             .catch((error) => {
                 const errorCode = error.code;

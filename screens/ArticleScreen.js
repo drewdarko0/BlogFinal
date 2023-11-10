@@ -1,62 +1,69 @@
 import React from "react";
-import { Button, Image, StyleSheet, Text, View } from "react-native";
+import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
+import { Button } from '@rneui/themed';
 import { useNavigation } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+const windowWidth = Dimensions.get("window").width;
 
 const ArticleScreen = ({route}) => {
 
     const navigation = useNavigation();
-    const { article } = route.params;
-    const blogTimestamp = new Date(article.timestamp.seconds*1000);
-    const formatedTime=blogTimestamp.toUTCString();    
+    const { article } = route.params;      
 
     return (
-        <View style={styles.container}>
-            
-            <Text style={styles.time}>{formatedTime}</Text>
-            
-            <Image 
-                    style={styles.articleImage} 
-                    source={article.image}
+        <SafeAreaView>
+            <View style={styles.container}>                
+                <Text style={styles.time}>{new Date(article.timestamp.seconds*1000).toUTCString()}</Text>                
+                <Image 
+                        style={styles.articleImage} 
+                        source={article.image}
+                        resizeMode="contain"
+                    />
+                <Text style={styles.title}>{ article.title }</Text>
+                <Text style={styles.body}>{ article.text }</Text>
+                <Button
+                    onPress={() => navigation.navigate('Home')}
+                    style={styles.button}
+                    title='Back'
+                    color='#075133'
                 />
-            <Text style={styles.title}>{ article.title }</Text>
-            <Text style={styles.body}>{ article.text }</Text>
-            <Button
-                onPress={() => navigation.navigate('Home')}
-                style={styles.button}
-                title='Back'
-                color='#075133'
-            />
-        </View>
+            </View>
+        </SafeAreaView>
     );
 }
 
 export default ArticleScreen;
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      padding: 10,
-      paddingTop: 20
+    container: {    
+        flex: '1',    
+        padding: 10,
+        paddingTop: 20,
+        justifyContent: "center",
+        alignItems: 'center',
     },
     title: {
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 15,
+        textAlign: 'center',
     },
     body: {
         fontSize: 18,
-        paddingBottom: 15
+        paddingBottom: 15,
     },
     articleImage: {
-        height: 250,
         borderRadius: 5,
-        marginBottom: 20,
+        width: windowWidth * 0.5,
+        aspectRatio: 1
     },
     button: {
-        paddingHorizontal: 15,
-        marginTop: 160
+        marginTop: 20,
+        marginBottom: 20,
+        width: 250,        
     },
     time: {
         paddingBottom: 15
     }
-  });
+});

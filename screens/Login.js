@@ -40,55 +40,53 @@ const LoginScreen = ({navigation}) => {
         }
   
       return (
-        <SafeAreaView>
-            <View style={styles.anchor}>
-                <View style={styles.container}>
-                    <Text style={styles.heading}>This requires a registered user to use this part of the app.  Please login below.</Text>
-                    <Input
-                        placeholder='Enter your email'
-                        label='Email'
-                        leftIcon={
-                            <Ionicons 
-                                style={styles.mail}
-                                name="mail" 
-                                size={24} 
-                                color="#075133" 
-                            />
-                        }
-                        autoCapitalize = 'none'
-                        value={email}
-                        onChangeText={text => setEmail(text)}
-                    />
-                    <Input
-                        placeholder='Enter your password'
-                        label='Password'
-                        leftIcon={
-                            <Ionicons 
-                                style={styles.mail}
-                                name="lock-closed" 
-                                size={24} 
-                                color="#075133" 
-                            />
-                        }
-                        autoCapitalize = 'none'
-                        value={password}
-                        onChangeText={text => setPassword(text)}
-                        secureTextEntry
-                    />
-                    <Button 
-                        title="Sign In" 
-                        style={styles.button} 
-                        onPress={() => login(email, password, navigation)} 
-                        color='#075133'
-                    />
-                    <Button
-                        onPress={() => navigation.navigate('Home')}
-                        style={styles.button}
-                        title='Home'
-                        color='#075133'
-                    />                
-                </View>
-            </View>
+        <SafeAreaView>            
+            <View style={styles.container}>
+                <Text style={styles.heading}>This requires a registered user to use this part of the app.  Please login below.</Text>
+                <Input
+                    placeholder='Enter your email'
+                    label='Email'
+                    leftIcon={
+                        <Ionicons 
+                            style={styles.mail}
+                            name="mail" 
+                            size={24} 
+                            color="#075133" 
+                        />
+                    }
+                    autoCapitalize = 'none'
+                    value={email}
+                    onChangeText={text => setEmail(text)}
+                />
+                <Input
+                    placeholder='Enter your password'
+                    label='Password'
+                    leftIcon={
+                        <Ionicons 
+                            style={styles.mail}
+                            name="lock-closed" 
+                            size={24} 
+                            color="#075133" 
+                        />
+                    }
+                    autoCapitalize = 'none'
+                    value={password}
+                    onChangeText={text => setPassword(text)}
+                    secureTextEntry
+                />
+                <Button 
+                    title="Sign In" 
+                    style={styles.button} 
+                    onPress={() => login(email, password, navigation)} 
+                    color='#075133'
+                />
+                <Button
+                    onPress={() => navigation.navigate('Home')}
+                    style={styles.button}
+                    title='Home'
+                    color='#075133'
+                />                
+            </View>            
         </SafeAreaView>                
       )
   }
@@ -103,8 +101,8 @@ const LoginScreen = ({navigation}) => {
         justifyContent: 'center',
       },
       heading: {
-        fontSize: 16,
-        color: '#999',
+        fontSize: 20,
+        color: '#000',
         marginBottom: 40,         
         textAlign: 'center',
       },

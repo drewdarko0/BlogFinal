@@ -7,7 +7,6 @@ import LoginScreen from '../screens/Login';
 import RegisterScreen from '../screens/Register';
 import AdminScreen from '../screens/Admin';
 import ArticleScreen from '../screens/ArticleScreen';
-import NotFoundScreen from '../screens/NotFound';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,10 +37,6 @@ const Routes = () => {
               <Stack.Screen name="Article"
                               component={ArticleScreen}
                               options={{ title: 'Article' }}
-              />
-              <Stack.Screen name="*"
-                            component={NotFoundScreen}
-                            options={{ title: '404'}}
               />
           </Stack.Navigator>
       </NavigationContainer>

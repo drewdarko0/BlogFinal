@@ -16,10 +16,10 @@ const ArticleList = ({data}) => {
     {                  
         return (            
             <FlatList
-                style={StyleSheet.container}
+                style={styles.container}
                 data={data}
                 renderItem={renderCard}
-                keyExtractor={item => item.id}
+                keyExtractor={item => item.timestamp}
                 ItemSeparatorComponent={ () => {
                     return (
                         <View style={styles.separator} />
@@ -40,9 +40,7 @@ export default ArticleList;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        padding: 10,
-        paddingTop: 20.
+        
     },
     list: {
         paddingHorizontal: 17,
