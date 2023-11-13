@@ -1,5 +1,5 @@
 import React from "react";
-import { ImageBackground, StyleSheet, View } from "react-native";
+import {  Dimensions, ImageBackground, StyleSheet, View } from "react-native";
 import ArticleList from "../components/ArticleList";
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '../lib/firebase';
@@ -12,8 +12,8 @@ const blogRef = collection(db, 'blog');
 const q = query(blogRef, orderBy('timestamp', 'desc'));
 const querySnapshot = await getDocs(q);
 const blogData = []; 
-const image = { uri: "https://docs.expo.dev/static/images/tutorial/splash.png" };
-
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 
 querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
@@ -25,11 +25,14 @@ const HomeScreen = ({navigation}) => {
     
     return (
         <SafeAreaView>
+            <View>
+            <ImageBackground source={require('../assets/blogbackground.jpg')} style={styles.image}>
             <View style={styles.container}>
-            <ImageBackground source={image} style={styles.image}>
-                <Header />
-                <ArticleList data={blogData} />
+                
+                <Header style={styles.header} />
+                <ArticleList style={styles.list} data={blogData} />
                 <Footer />
+            </View>
             </ImageBackground>
             </View>
         </SafeAreaView>
@@ -41,13 +44,21 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
     container: {
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0)',
     },
     image: {
         flex: 1,
         resizeMode: 'cover',
         justifyContent: 'center',
+    },
+    list: {
+
+    },
+    header: {
+
     }
   });

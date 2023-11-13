@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 
 const ArticleScreen = ({route}) => {
 
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     },
     articleImage: {
         borderRadius: 5,
-        width: windowWidth * 0.5,
+        height: windowHeight * 0.65,
         aspectRatio: 1
     },
     button: {

@@ -25,23 +25,27 @@ const Card = ({item}) => {
       }
 
     return (       
-        <Pressable
-        style={styles.button}
-        onPress={ () => { navigation.navigate('Article', { article: item }) }}
-        >
-            <View style={styles.card}>
+        <View>
+            <View>
                 <Text style={styles.timeStamp}>{new Date(item.timestamp.seconds*1000).toLocaleDateString()}</Text>
-                <Image 
-                    style={styles.cardImage} 
-                    source={item.image}
-                />
-                <View style={styles.cardContent}>
-                    <View style={styles.cardHeader}>                        
-                        <Text style={styles.title}>{item.title}</Text>
-                    </View>                    
-                </View>
             </View>
-        </Pressable>
+            <Pressable
+                style={styles.button}
+                onPress={ () => { navigation.navigate('Article', { article: item }) }}
+            >
+                <View style={styles.card}>                    
+                    <Image 
+                        style={styles.cardImage} 
+                        source={item.image}
+                    />
+                    <View style={styles.cardContent}>
+                        <View style={styles.cardHeader}>                                    
+                            <Text style={styles.title}>{item.title}</Text>
+                        </View>                    
+                    </View>
+                </View>            
+            </Pressable>
+        </View>
     )
 }
 
@@ -61,13 +65,16 @@ const styles = StyleSheet.create({
         backgroundColor: '#efefef',
         alignSelf: "stretch",
         elevation: 7,
-        width: windowWidth * 0.7,
-        aspectRatio: 1
+        width: windowWidth * 0.8,
+        aspectRatio: 1,
+        maxHeight: 700,
+        maxWidth: 700
     },
     cardImage: {
         flex: '1',
         borderRadius: 3,
         marginHorizontal: 15,
+        marginTop: 15
     },
     cardContent: {
         paddingVertical: 15,
@@ -77,10 +84,12 @@ const styles = StyleSheet.create({
         paddingBottom: 5
     },
     timeStamp: {
+        fontSize: 20,
         textAlign: 'center',
+        marginTop: 20
     },
     title: {
-        fontSize: 30,
+        fontSize: 25,
         textAlign: 'center',
         fontFamily: 'PermanentMarker-Regular'
     },

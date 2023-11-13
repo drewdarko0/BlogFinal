@@ -22,7 +22,9 @@ const ArticleList = ({data}) => {
                 keyExtractor={item => item.timestamp}
                 ItemSeparatorComponent={ () => {
                     return (
-                        <View style={styles.separator} />
+                        <View style={styles.separator}>
+                            
+                        </View> 
                     )
                 }}
             />

@@ -1,12 +1,14 @@
 import React from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Dimensions, Pressable, StyleSheet, View } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from "@react-navigation/native";
+
+
 
 const Footer = () => {
 
     const navigation = useNavigation();
-
+    
     return (
         
         <View style={styles.container}>
@@ -91,26 +93,48 @@ export default Footer;
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      minHeight: 100,
       display: 'flex', 
       flexDirection: 'row', 
       justifyContent: 'center', 
-      alignItems: 'center'
+      alignItems: 'center',
+      backgroundColor: '#efefef',
+      borderWidth: 0,
+        shadowColor: '#000000',
+        shadowOffset: {
+            width: 1,
+            height: 1
+        },
+        shadowOpacity: 0.7,
+        shadowRadius: 4,
+        alignSelf: "stretch",
+        elevation: 7,        
     },
     github: {
-        marginLeft: 8, 
-        marginRight: 8, 
+        marginLeft: 15, 
+        marginRight: 15, 
+    },
+    pressablegithub: {
+        backgroundColor: 'rgba(0, 0, 0, 0)',
     },
     linkedin: {
-        marginLeft: 8, 
-        marginRight: 8, 
+        marginLeft: 15, 
+        marginRight: 15, 
+    },
+    pressablelinkedin: {
+        backgroundColor: 'rgba(0, 0, 0, 0)',
     },
     mail: {
-        marginLeft: 8, 
-        marginRight: 8, 
+        marginLeft: 15, 
+        marginRight: 15, 
+    },
+    pressablemail: {
+        backgroundColor: 'rgba(0, 0, 0, 0)',
     },
     admin: {
-        marginLeft: 8, 
-        marginRight: 8, 
+        marginLeft: 15, 
+        marginRight: 15, 
     },
+    pressableadmin: {
+        backgroundColor: 'rgba(0, 0, 0, 0)',
+    }
 });
