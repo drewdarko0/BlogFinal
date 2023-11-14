@@ -26,14 +26,17 @@ const HomeScreen = ({navigation}) => {
     return (
         <SafeAreaView>
             <View>
-            <ImageBackground source={require('../assets/blogbackground.jpg')} style={styles.image}>
-            <View style={styles.container}>
-                
-                <Header style={styles.header} />
-                <ArticleList style={styles.list} data={blogData} />
-                <Footer />
-            </View>
-            </ImageBackground>
+                <ImageBackground 
+                    source={require('../assets/blogbackground18.jpg')} 
+                    style={styles.image}
+                    blurRadius={2}
+                >
+                    <View style={styles.container}>                    
+                        <Header style={styles.header} />
+                        <ArticleList style={styles.list} data={blogData} />
+                        <Footer />
+                    </View>
+                </ImageBackground>
             </View>
         </SafeAreaView>
     )
@@ -49,11 +52,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0)',
+        
     },
     image: {
         flex: 1,
         resizeMode: 'cover',
         justifyContent: 'center',
+        
     },
     list: {
 

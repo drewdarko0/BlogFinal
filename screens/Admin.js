@@ -46,38 +46,40 @@ const AdminScreen = ({navigation}) => {
         }).finally( () => {
             console.log('Finally sent...');
         })
+        setImage('');
+        setTitle('');
+        setText('');
+        alert('New post created!');
     }
 
         
     return (
         <SafeAreaView>
             <View style={styles.container}>
-                <Text>This is the admin screen</Text>
+                <Text>ADMIN SCREEN</Text>
                 <View style={styles.buttonGroup}>
                     <Button
                         onPress={() => navigation.navigate('Home')}
                         style={styles.homeButton}
                         title='Home'
-                        color='#075133'
+                        color='#403e3f'
                     />
                     <Button 
                         onPress={() => logout()} 
                         style={styles.logoutButton} 
                         title="Sign Out"                
-                        color='#075133'
+                        color='#403e3f'
                     />
                     <Button 
                         onPress={() => navigation.navigate('Register')} 
                         style={styles.registerButton} 
                         title="Register New User"                
-                        color='#075133'
+                        color='#403e3f'
                     />
                 </View>
-                
                     <Input
                         placeholder={new Date().toLocaleDateString()}
-                        label='Blog Timestamp'
-                        
+                        label='Blog Timestamp'                        
                         autoCapitalize = 'none'
                         value={timestamp}
                         onChangeText={text => {
@@ -91,8 +93,7 @@ const AdminScreen = ({navigation}) => {
                     />
                     <Input
                         placeholder='Enter an image URL'
-                        label='Image URL'
-                        
+                        label='Image URL'                        
                         autoCapitalize = 'none'
                         value={img}
                         onChangeText={text => setImage(text)}
@@ -117,7 +118,7 @@ const AdminScreen = ({navigation}) => {
                         title="Submit"
                         style={styles.button} 
                         onPress={() => createNewPost(img, title, text)} 
-                        color='#075133'
+                        color='#403e3f'
                     />
             </View>
         </SafeAreaView>    
@@ -132,7 +133,12 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
+    },
+    form: {
+        flex: 1,
+        margin: 0,
+        padding: 0
     },
     button: {
         marginTop: 15,
@@ -153,10 +159,6 @@ const styles = StyleSheet.create({
     },
     buttonGroup: {
         flexDirection: 'row',
-        display: 'flex',        
-    },
-    form: {
-        margin: 0,
-        padding: 0
-    }
+        margin: 15
+    },    
   });

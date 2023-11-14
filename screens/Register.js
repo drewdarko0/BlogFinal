@@ -65,7 +65,7 @@ const RegisterScreen = ({navigation}) => {
                             style={styles.mail}
                             name="mail" 
                             size={24} 
-                            color="#075133" 
+                            color="#403e3f" 
                         />
                     }
                     autoCapitalize = 'none'
@@ -80,7 +80,7 @@ const RegisterScreen = ({navigation}) => {
                             style={styles.mail}
                             name="lock-closed" 
                             size={24} 
-                            color="#075133" 
+                            color="#403e3f" 
                         />
                     }
                     autoCapitalize = 'none'
@@ -96,7 +96,7 @@ const RegisterScreen = ({navigation}) => {
                             style={styles.mail}
                             name="lock-closed" 
                             size={24} 
-                            color="#075133" 
+                            color="#403e3f" 
                         />
                     }
                     autoCapitalize = 'none'
@@ -108,7 +108,7 @@ const RegisterScreen = ({navigation}) => {
                     title="Register" 
                     style={styles.button} 
                     onPress={() => registration(email, password1, password2, navigation)}
-                    color='#075133' 
+                    color='#403e3f' 
                 />
 
                 <Pressable
@@ -124,7 +124,7 @@ const RegisterScreen = ({navigation}) => {
                             style={styles.admin}
                             name="shield" 
                             size={64} 
-                            color="#075133" 
+                            color="#403e3f" 
                         />
                     )}
                 </Pressable>                    

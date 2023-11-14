@@ -3,6 +3,8 @@ import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
 import { Button } from '@rneui/themed';
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../lib/firebase';
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -10,7 +12,26 @@ const windowHeight = Dimensions.get("window").height;
 const ArticleScreen = ({route}) => {
 
     const navigation = useNavigation();
-    const { article } = route.params;      
+    const { article } = route.params;     
+    
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+          //Logged in - stay here   
+          return (
+            <View>
+                <Button
+                    onPress={() => navigation.navigate('Home')}
+                    style={styles.button}
+                    title='Back'
+                    color='#403e3f'
+                />
+            </View>    
+          )       
+        } else {
+          //not logged in
+          
+        }
+      })
 
     return (
         <SafeAreaView>
@@ -27,7 +48,7 @@ const ArticleScreen = ({route}) => {
                     onPress={() => navigation.navigate('Home')}
                     style={styles.button}
                     title='Back'
-                    color='#075133'
+                    color='#403e3f'
                 />
             </View>
         </SafeAreaView>

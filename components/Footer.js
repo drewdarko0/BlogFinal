@@ -25,7 +25,7 @@ const Footer = () => {
                     style={styles.github}
                     name="logo-github" 
                     size={32} 
-                    color="#075133" 
+                    color="#403e3f" 
                 />
             )}
             </Pressable>
@@ -43,7 +43,7 @@ const Footer = () => {
                     style={styles.linkedin}
                     name="logo-linkedin" 
                     size={32} 
-                    color="#075133" 
+                    color="#403e3f" 
                 />
             )}
             </Pressable>
@@ -61,7 +61,7 @@ const Footer = () => {
                     style={styles.mail}
                     name="mail" 
                     size={32} 
-                    color="#075133" 
+                    color="#403e3f" 
                 />
             )}
             </Pressable>
@@ -79,7 +79,7 @@ const Footer = () => {
                     style={styles.admin}
                     name="shield" 
                     size={32} 
-                    color="#075133" 
+                    color="#403e3f" 
                 />
             )}
             </Pressable>

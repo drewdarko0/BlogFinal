@@ -25,10 +25,7 @@ const Card = ({item}) => {
       }
 
     return (       
-        <View>
-            <View>
-                <Text style={styles.timeStamp}>{new Date(item.timestamp.seconds*1000).toLocaleDateString()}</Text>
-            </View>
+        <View>            
             <Pressable
                 style={styles.button}
                 onPress={ () => { navigation.navigate('Article', { article: item }) }}
@@ -40,7 +37,7 @@ const Card = ({item}) => {
                     />
                     <View style={styles.cardContent}>
                         <View style={styles.cardHeader}>                                    
-                            <Text style={styles.title}>{item.title}</Text>
+                            <Text style={styles.title}>{new Date(item.timestamp.seconds*1000).toLocaleDateString()} - {item.title}</Text>
                         </View>                    
                     </View>
                 </View>            
@@ -51,20 +48,23 @@ const Card = ({item}) => {
 
 export default Card;
 
-const styles = StyleSheet.create({    
+const styles = StyleSheet.create({   
+    container: {
+
+    },
     card: {
         borderWidth: 0,
-        shadowColor: '#000000',
+        shadowColor: '#000',
         shadowOffset: {
-            width: 1,
-            height: 1
+            width: 2,
+            height: 2
         },
-        shadowOpacity: 0.7,
-        shadowRadius: 4,
+        shadowOpacity: 0.8,
+        shadowRadius: 5,
+        elevation: 7,
         margin: 12,
         backgroundColor: '#efefef',
-        alignSelf: "stretch",
-        elevation: 7,
+        alignSelf: "stretch",        
         width: windowWidth * 0.8,
         aspectRatio: 1,
         maxHeight: 700,
@@ -74,7 +74,8 @@ const styles = StyleSheet.create({
         flex: '1',
         borderRadius: 3,
         marginHorizontal: 15,
-        marginTop: 15
+        marginTop: 15,
+        borderWidth: 0,
     },
     cardContent: {
         paddingVertical: 15,
@@ -83,13 +84,8 @@ const styles = StyleSheet.create({
     cardHeader: {
         paddingBottom: 5
     },
-    timeStamp: {
-        fontSize: 20,
-        textAlign: 'center',
-        marginTop: 20
-    },
     title: {
-        fontSize: 25,
+        fontSize: 20,
         textAlign: 'center',
         fontFamily: 'PermanentMarker-Regular'
     },
