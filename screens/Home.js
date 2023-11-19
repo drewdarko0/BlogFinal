@@ -27,10 +27,10 @@ const HomeScreen = ({navigation}) => {
         <SafeAreaView>
             <View>
                 <ImageBackground 
-                    source={require('../assets/blogbackground18.jpg')} 
+                    source={require('../assets/blogbackground31.jpg')} 
                     style={styles.image}
-                    blurRadius={2}
-                >
+                    blurRadius={1}
+                >                    
                     <View style={styles.container}>                    
                         <Header style={styles.header} />
                         <ArticleList style={styles.list} data={blogData} />
@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
     image: {
         flex: 1,
         resizeMode: 'cover',
-        justifyContent: 'center',
         
     },
     list: {

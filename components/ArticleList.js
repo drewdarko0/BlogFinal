@@ -22,9 +22,7 @@ const ArticleList = ({data}) => {
                 keyExtractor={item => item.timestamp}
                 ItemSeparatorComponent={ () => {
                     return (
-                        <View style={styles.separator}>
-                            
-                        </View> 
+                        <View style={styles.separator} />
                     )
                 }}
             />
@@ -47,7 +45,6 @@ const styles = StyleSheet.create({
     list: {
         paddingHorizontal: 17,
         backgroundColor: "#eeeeee",
-        paddingBottom: 12
     },
     header: {
         marginTop: 20,

@@ -25,7 +25,7 @@ const Card = ({item}) => {
       }
 
     return (       
-        <View>            
+        <View style={styles.container}>            
             <Pressable
                 style={styles.button}
                 onPress={ () => { navigation.navigate('Article', { article: item }) }}
@@ -50,7 +50,7 @@ export default Card;
 
 const styles = StyleSheet.create({   
     container: {
-
+        width: '100%'
     },
     card: {
         borderWidth: 0,
